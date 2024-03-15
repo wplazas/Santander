@@ -1,0 +1,42 @@
+package com.example.demo;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.demo.controller.productController;
+import com.example.demo.repository.Repository;
+import com.example.demo.model.productModel;
+
+@SpringBootTest
+class CrudProductsApplicationTests {
+	
+	 private productController controlprod;
+	 
+	 @Mock
+	 private Repository repo;
+
+	@Test
+	public void testfindProductById() {
+		
+	      productModel pro = new productModel();
+	      pro.setNombre("vaso");
+	      pro.setId(20);
+	      pro.setPrecio(800);
+	        repo.save(pro);
+	        Boolean actualResult = repo.existsById(1000);
+	        assertThat(actualResult).isTrue();
+		
+	}
+	
+	
+
+}

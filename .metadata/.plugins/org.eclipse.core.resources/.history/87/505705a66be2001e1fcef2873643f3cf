@@ -1,0 +1,32 @@
+package com.example.demo;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.demo.controller.productController;
+import com.example.demo.repository.Repository;
+import com.example.demo.model.productModel;
+
+@SpringBootTest
+class CrudProductsApplicationTests {
+	
+	 private productController controlprod;
+	 private Repository repo;
+	 
+
+	@Test
+	public void testsaveproduct() {
+		productModel producto = new productModel();
+		controlprod.saveproduct(producto);
+
+		///con el Assert
+		verify(repo, times(1)).save(producto);
+		
+	}
+
+}
